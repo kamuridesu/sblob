@@ -22,7 +22,7 @@ async function buildPostListToIndex() {
         }
       }),
     );
-    postContainer.innerHTML += `<ul>\n${items.join("")}</ul>`;
+    postContainer.innerHTML = `<ul>\n${items.join("")}</ul>`;
   } catch (e) {
     console.error("failed to fetch page contents, err is ", e);
   }

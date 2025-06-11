@@ -19,7 +19,7 @@ async function router() {
   const postContainer = document.getElementById("postsContainer");
   postContainer.innerHTML = "<p>Loading...</p>";
   if (path === "/" || path === "/index.html") {
-    await buildPostList();
+    await buildPostListToIndex();
   } else {
     await fetchPost(path);
   }
