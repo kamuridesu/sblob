@@ -2,11 +2,12 @@ async function includeFooterAndHeader() {
   var headerSection = document.getElementById("headerSection");
   var footerSection = document.getElementById("footerSection");
 
+  console.log(headerSection);
   try {
-    var footerContent = await fetch("components/footer.html");
+    var footerContent = await fetch("/components/footer.html");
     footerSection.innerHTML = await footerContent.text();
 
-    var headerContent = await fetch("components/header.html");
+    var headerContent = await fetch("/components/header.html");
     headerSection.innerHTML = await headerContent.text();
   } catch (e) {
     console.error("could not fetch resources, err is ", e);
@@ -64,5 +65,6 @@ function setupEventListener() {
 function main() {
   includeFooterAndHeader();
   setupEventListener();
+  router();
 }
 main();

@@ -7,6 +7,8 @@ async function buildPostListToIndex() {
     return;
   }
 
+  document.getElementsByTagName("title")[0].text = "Kamublob";
+
   try {
     var postContainer = document.getElementById("postsContainer");
 
@@ -42,6 +44,7 @@ async function fetchPost(postPath) {
       throw new Error("Post content not found");
     }
     const contentText = await content.text();
+    document.getElementsByTagName("title")[0].text = jsonData.title;
     postContainer.innerHTML = converter.makeHtml(contentText);
   } catch (e) {
     console.error("failed to load post for " + postPath + " err is: ", e);
