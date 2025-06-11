@@ -51,7 +51,3 @@ async function fetchPost(postPath) {
     return;
   }
 }
-
-if (window.location.pathname === "/") {
-  buildPostListToIndex();
-}

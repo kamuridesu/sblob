@@ -20,12 +20,20 @@
   </head>
 
   <body>
+    <div id="no-js-alert">
+      <container>
+        <h2>Warn:</h2>
+        <p>This site needs javascript to twerk :(</p>
+      </container>
+    </div>
+
     <div id="headerSection"></div>
 
     <div id="postsContainer"></div>
 
     <div id="footerSection"></div>
     <script type="text/javascript">
+      document.getElementById("no-js-alert").outerHTML = null;
       console.log("posts are: ", postsManifests);
     </script>
   </body>
