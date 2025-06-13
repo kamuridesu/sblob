@@ -1,7 +1,13 @@
-const converter = new showdown.Converter();
+const converter = new showdown.Converter({
+  extensions: [
+    showdownHighlight({
+      pre: true,
+      auto_detection: true,
+    }),
+  ],
+});
 
 async function buildPostListToIndex() {
-  console.log("test");
   if (!postsManifests) {
     console.warn("no posts found");
     return;
@@ -24,10 +30,15 @@ async function buildPostListToIndex() {
         }
       }),
     );
-    postContainer.innerHTML = `<ul>\n${items.join("")}</ul>`;
+    postContainer.innerHTML = `<h3>Latest Posts:</h3>\n<ul>\n${items.join("")}</ul>`;
   } catch (e) {
     console.error("failed to fetch page contents, err is ", e);
   }
+}
+
+function putMetadata(jsonData, content) {
+  const tags = (jsonData.tags == undefined ? [] : jsonData.tags).join(" ");
+  return `<p>Published at ${jsonData.publish_date}<p>Tags: ${tags}</p></p>\n${content}`;
 }
 
 async function fetchPost(postPath) {
@@ -45,7 +56,10 @@ async function fetchPost(postPath) {
     }
     const contentText = await content.text();
     document.getElementsByTagName("title")[0].text = jsonData.title;
-    postContainer.innerHTML = converter.makeHtml(contentText);
+    postContainer.innerHTML = putMetadata(
+      jsonData,
+      converter.makeHtml(contentText),
+    );
   } catch (e) {
     console.error("failed to load post for " + postPath + " err is: ", e);
     return;

@@ -2,7 +2,6 @@ async function includeFooterAndHeader() {
   var headerSection = document.getElementById("headerSection");
   var footerSection = document.getElementById("footerSection");
 
-  console.log(headerSection);
   try {
     var footerContent = await fetch("/components/footer.html");
     footerSection.innerHTML = await footerContent.text();
@@ -15,7 +14,6 @@ async function includeFooterAndHeader() {
 }
 
 async function router() {
-  console.log("routing ");
   const path = window.location.pathname;
   const postContainer = document.getElementById("postsContainer");
   postContainer.innerHTML = "<p>Loading...</p>";

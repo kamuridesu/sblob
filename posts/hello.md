@@ -1,3 +1,3 @@
-# Title
+# Hello World
 
-This is a test
+This is the first post on my new blog!

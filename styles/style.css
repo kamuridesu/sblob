@@ -1,3 +1,35 @@
+body {
+  background-color: black;
+  color: #d3d3d3;
+}
+
+.header a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.header p {
+  padding-top: 0%;
+  margin-top: 0%;
+  margin-bottom: 0;
+  font-size: 3rem;
+}
+
 header {
-  background-color: gray;
+  margin-top: 0%;
+  margin-bottom: 0;
+}
+
+.posts a {
+  color: cyan;
+  text-decoration: none;
+}
+
+.posts {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.footer a:visited {
+  color: green;
 }
