@@ -62,6 +62,7 @@ async function fetchPost(postPath) {
     );
   } catch (e) {
     console.error("failed to load post for " + postPath + " err is: ", e);
+    postContainer.innerHTML = `<h3>Post ${postPath} not found!</h3>`;
     return;
   }
 }
