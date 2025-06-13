@@ -26,6 +26,8 @@ jobs:
         with:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ env.IMAGE_TAGS }}
+          containerfiles: |
+            ./Dockerfile
 
       - name: Push to ghcr
         id: push
