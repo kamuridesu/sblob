@@ -58,9 +58,14 @@ No total o valor dos impostos recolhidos foi de R$175, ou seja, somando o que ca
 
 ## Fontes e Referências:
 
-https://www.jusbrasil.com.br/artigos/os-principais-pontos-da-reforma-tributaria-o-que-muda-com-a-emenda-constitucional-n-132-2023/2778614749
-https://www.migalhas.com.br/depeso/426087/a-nao-cumulatividade-dos-tributos-na-reforma-tributaria
-https://www.jota.info/tributos/o-que-e-a-pec-45-2019-e-o-que-o-texto-propoe-para-a-reforma-tributaria
-https://www.gov.br/suframa/pt-br/assuntos/noticias/reforma-tributaria-garante-ipi-da-zona-franca-de-manaus-e-criacao-de-fundo-para-amazonia-ocidental-e-amapa
-https://www.planalto.gov.br/ccivil_03///////Constituicao/Emendas/Emc/emc132.htm#art23
-https://www.gazetadopovo.com.br/economia/reforma-tributaria-estudo-ipeaiva-brasil-28-maior-do-mundo-ipea/
+<https://www.jusbrasil.com.br/artigos/os-principais-pontos-da-reforma-tributaria-o-que-muda-com-a-emenda-constitucional-n-132-2023/2778614749>
+
+<https://www.migalhas.com.br/depeso/426087/a-nao-cumulatividade-dos-tributos-na-reforma-tributaria>
+
+<https://www.jota.info/tributos/o-que-e-a-pec-45-2019-e-o-que-o-texto-propoe-para-a-reforma-tributaria>
+
+<https://www.gov.br/suframa/pt-br/assuntos/noticias/reforma-tributaria-garante-ipi-da-zona-franca-de-manaus-e-criacao-de-fundo-para-amazonia-ocidental-e-amapa>
+
+<https://www.planalto.gov.br/ccivil_03///////Constituicao/Emendas/Emc/emc132.htm#art23>
+
+<https://www.gazetadopovo.com.br/economia/reforma-tributaria-estudo-ipeaiva-brasil-28-maior-do-mundo-ipea/>
