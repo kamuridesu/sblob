@@ -1,7 +1,6 @@
 #! /bin/bash
 
 OUTPUT_FOLDER="build"
-MANIFEST_FILE=
 
 echo "Building manifest"
 rm -r $OUTPUT_FOLDER 2>/dev/null
