@@ -19,13 +19,16 @@ async function router() {
   postContainer.innerHTML = "<p>Loading...</p>";
   if (path === "/" || path === "/index.html") {
     await buildPostListToIndex();
+  } else if (path.startsWith("/tag/")) {
+    const items = path.split("/");
+    const tag = items[items.length - 1];
+    await buildTagsPostsList(tag);
   } else {
     await fetchPost(path);
   }
 }
 
 function setupEventListener() {
-  console.log("event listener set");
   document.addEventListener("click", (e) => {
     const target = e.target.closest("a");
     if (!target || !target.hasAttribute("href")) {
@@ -65,4 +68,5 @@ function main() {
   setupEventListener();
   router();
 }
+
 main();
