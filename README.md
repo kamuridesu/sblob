@@ -35,6 +35,5 @@ This project depends on:
 
 # TODO
 
-- [ ] Add tag filter
+- [x] Add tag filter
 - [ ] Add pagination
-- [ ] Add search

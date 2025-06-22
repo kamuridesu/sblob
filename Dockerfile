@@ -1,4 +1,5 @@
 FROM debian:trixie-slim AS build
+RUN apt-get update && apt-get install -y jq
 WORKDIR /setup
 COPY components/ ./components/
 COPY scripts/ ./scripts/
@@ -20,6 +21,6 @@ RUN touch /var/run/nginx.pid && chown -R runner:rungroup /var/run/nginx.pid
 
 USER runner
 
-EXPOSE 8080
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 

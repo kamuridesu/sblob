@@ -3,22 +3,30 @@
 OUTPUT_FOLDER="build"
 
 echo "Building manifest"
-rm -r $OUTPUT_FOLDER 2>/dev/null
 mkdir -p $OUTPUT_FOLDER || exit 1
+rm -r "$OUTPUT_FOLDER"/* 2>/dev/null
 cp -r components/ posts/ scripts/ styles/ index.html build/
 
 MANIFEST_FILE="$OUTPUT_FOLDER/scripts/manifest.js";
 
 echo "const postsManifests = [" > $MANIFEST_FILE || exit 1
 
-pages=$(stat -c '%w %n' posts/* | sort -rn | cut -d " " -f 4 | grep json);
+pages=$(for page in posts/*.json; do
+    sort_key=$(jq -r '.publish_date' "$page" | awk -F'/' '{print $3$1$2}')
+    if [ -n "$sort_key" ]; then
+        echo "$sort_key $page"
+    fi
+done | sort -rn | cut -d ' ' -f 2-)
 
 for page in $pages; do
-    echo "Found page: $page";
-    echo "\"$page\"", >> $MANIFEST_FILE || exit 1
+    filename=$(basename "$page")
+    echo "Found page: $filename";
+    echo "  \"posts/$filename\"," >> $MANIFEST_FILE || exit 1
 done
 
-sed -i '$s/,$//' $MANIFEST_FILE || exit 1
+if [ -s $MANIFEST_FILE ]; then
+    sed -i '$s/,$//' $MANIFEST_FILE || exit 1
+fi
 
 echo "]" >> $MANIFEST_FILE || exit 1
 echo "Done!"
