@@ -7,11 +7,15 @@ on:
 
 env:
   IMAGE_NAME: sblob
+  CURRENT_TAG: ${{ github.event.release.tag_name }}
   IMAGE_TAGS: latest ${{ github.sha }} ${{ github.event.release.tag_name }}
   IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
   IMAGE_PLATFORMS: linux/amd64, linux/arm64
   REGISTRY_USER: ${{ github.actor }}
   REGISTRY_PASSWORD: ${{ github.token }}
+  VALUES_REPO: ${{ secrets.VALUES_REPO }}
+  VALUES_REPO_BRANCH: ${{ secrets.VALUES_REPO_BRANCH }}
+  VALUES_FILE_PATH: ${{ secrets.VALUES_FILE_PATH }}
 
 permissions:
   packages: write
@@ -52,3 +56,22 @@ jobs:
       - name: Echo outputs
         run: |
           echo "${{ toJSON(steps.push.outputs) }}"
+
+  deploy:
+    name: "deploy to argocd"
+    runs-on: ubuntu-22.04
+    needs: release-ghcr
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ env.VALUES_REPO }}
+          ref: ${{ env.VALUES_REPO_BRANCH }}
+
+      - name: Commit new version
+        run: |
+          sed -i s'/^version:.*/version: "${{ env.CURRENT_TAG }}"/' ${{ env.VALUES_FILE_PATH }}
+          git config --global user.name Automation
+          git config --global user.email kamuridesu@users.noreply.github.com
+          git commit -am "feat: update ${{env.IMAGE_NAME }} to ${{ env.CURRENT_TAG }}"
+          git push
