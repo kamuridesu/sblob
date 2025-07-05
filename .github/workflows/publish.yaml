@@ -75,5 +75,6 @@ jobs:
           sed -i s'/^version:.*/version: "${{ env.CURRENT_TAG }}"/' ${{ env.VALUES_FILE_PATH }}
           git config --global user.name Automation
           git config --global user.email kamuridesu@users.noreply.github.com
+          git remote set-url origin https://x-access-token:${{ env.DEPLOY_TOKEN }}@github.com/${{ env.VALUES_REPO }}.git
           git commit -am "feat: update ${{env.IMAGE_NAME }} to ${{ env.CURRENT_TAG }}"
           git push
