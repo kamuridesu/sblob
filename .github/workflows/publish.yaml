@@ -16,6 +16,7 @@ env:
   VALUES_REPO: ${{ secrets.VALUES_REPO }}
   VALUES_REPO_BRANCH: ${{ secrets.VALUES_REPO_BRANCH }}
   VALUES_FILE_PATH: ${{ secrets.VALUES_FILE_PATH }}
+  DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
 
 permissions:
   packages: write
@@ -67,6 +68,7 @@ jobs:
         with:
           repository: ${{ env.VALUES_REPO }}
           ref: ${{ env.VALUES_REPO_BRANCH }}
+          token: ${{ env.DEPLOY_TOKEN }}
 
       - name: Commit new version
         run: |
