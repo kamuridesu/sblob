@@ -59,22 +59,20 @@ jobs:
           echo "${{ toJSON(steps.push.outputs) }}"
 
   deploy:
-    name: "deploy to argocd"
+    name: "notify cd repo"
     runs-on: ubuntu-22.04
     needs: release-ghcr
 
     steps:
-      - uses: actions/checkout@v4
+      - name: trigger update in values repo
+        uses: peter-evans/repository-dispatch@v3
         with:
           repository: ${{ env.VALUES_REPO }}
-          ref: ${{ env.VALUES_REPO_BRANCH }}
           token: ${{ env.DEPLOY_TOKEN }}
-
-      - name: Commit new version
-        run: |
-          sed -i s'/^version:.*/version: "${{ env.CURRENT_TAG }}"/' ${{ env.VALUES_FILE_PATH }}
-          git config --global user.name Automation
-          git config --global user.email kamuridesu@users.noreply.github.com
-          git remote set-url origin https://x-access-token:${{ env.DEPLOY_TOKEN }}@github.com/${{ env.VALUES_REPO }}.git
-          git commit -am "feat: update ${{env.IMAGE_NAME }} to ${{ env.CURRENT_TAG }}"
-          git push
+          event-type: "update-version"
+          client-payload: >-
+            {
+              "version": "${{ env.CURRENT_TAG }}",
+              "image_name": "${{ env.IMAGE_NAME }}",
+              "file_path": "${{ env.VALUES_FILE_PATH }}"
+            }
