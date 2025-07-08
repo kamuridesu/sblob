@@ -1,0 +1,6 @@
+{
+  "title": "Integrando DataDog e Kubernetes",
+  "file": "datadog-k8s-integration.md",
+  "publish_date": "07/08/25",
+  "tags": ["tech", "devops", "docker", "kubernetes", "go", "python", "java"]
+}
