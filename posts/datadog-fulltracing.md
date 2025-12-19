@@ -84,7 +84,7 @@ Com isso o frontend está pronto!
 
 ## Backend
 
-Como a aplicação é fullstack (o backend e frontend são a mesma coisa), também foi preciso instrumentar o lado backend dele, ou seja, a aplicação Python + Quart. Para isso foi utilizada a dependência do DataDog (ddtrace) para criar um TraceMiddleware que conseguiria interceptar as requsições recebidas. Também foi feito um patch do `aiohttp` para que o DataDog conseguisse adicionar o header de baggage nas requsições enviadas.
+Como a aplicação é fullstack (servindo tanto os assets estáticos quanto a API), foi necessário instrumentar o servidor Python (Quart) separadamente do RUM (JavaScript). Para isso foi utilizada a dependência do DataDog (ddtrace) para criar um TraceMiddleware que conseguiria interceptar as requsições recebidas. Também foi feito um patch do `aiohttp` para que o DataDog conseguisse adicionar o header de baggage nas requsições enviadas.
 
 ```py
 from ddtrace import patch
@@ -103,7 +103,7 @@ O passo final nessa aplicação foi adicionar uma tracecontext,baggagevariável 
 
 Uma aplicação em Java/Spring cujo o único objetivo é receber e encaminhar requisições foi criada. Ela está rodando em duas rotas, `/java-dd-test` e `java-dd-test-two`. A `java-dd-test-two` recebe uma requisição e encaminha para a `java-dd-test`, que responde com `ok`.
 
-Nessas não foi necessário fazer muita coisa; apenas instrumentação simples via java-agent e configuração das mesmas variáveis de ambiente `DD_TRACE_HEADER_TAGS` e `DD_TRACE_PROPAGATION_STYLE_EXTRACT`.
+Nesses serviços não foi necessário fazer muita coisa; apenas instrumentação simples via java-agent e configuração das mesmas variáveis de ambiente `DD_TRACE_HEADER_TAGS` e `DD_TRACE_PROPAGATION_STYLE_EXTRACT`.
 
 ## Resultados
 
