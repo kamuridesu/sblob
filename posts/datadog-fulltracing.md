@@ -129,6 +129,8 @@ No segundo widget, selecione Spans e coloque a query "@context.correlation_id:\*
 
 E pronto, basta escolher um ID para ver os dados.
 
+![Exemplo de dashboard](https://github.com/kamuridesu/sblob/blob/main/static/images/2025-12-19-datadog-dashboard.png?raw=true)
+
 ## FAQ
 
 ### Por que usar `baggage` e não um header customizado?
