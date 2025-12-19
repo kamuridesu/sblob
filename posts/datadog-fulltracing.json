@@ -1,0 +1,16 @@
+{
+  "title": "Monitoramento ponta-a-ponta: visualizando jornada de uma requisição no DataDog",
+  "file": "datadog-fulltracing.md",
+  "publish_date": "12/18/25",
+  "tags": [
+    "datadog",
+    "python",
+    "frontend",
+    "javascript",
+    "java",
+    "obversability",
+    "monitoring",
+    "sre",
+    "devops"
+  ]
+}
