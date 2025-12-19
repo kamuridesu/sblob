@@ -28,7 +28,7 @@ allowedTracingUrls: [/^\//, window.location.origin];
 
 Isso vai permitir que o DataDog monitore requisições para correlacionar os traces com eventos de RUM. Isso por si só já torna possível a visualização do Flame Graph com informações da jornada da requisição, todavia não temos um campo de span para fazer a pesquisa e correlacionar essas informações em dashboards, por exemplo.
 
-Para que seja possível pesquisar e correlacionar spans dentro dos traces, podemos enviar um header que será propagado em todas as requisições. No exemplo abaixo, fiz um wrapper em cima da função `window.fetch` e enviei um header customizado "baggage: correlation_id=valor_aleatorio" em todas as requisições para o backend:
+Para que seja possível pesquisar e correlacionar spans dentro dos traces, podemos enviar um header que será propagado em todas as requisições. No exemplo abaixo, foi criado um wrapper em cima da função `window.fetch`, enviando um header customizado "baggage: correlation_id=valor_aleatorio" em todas as requisições para o backend:
 
 ```js
 const originalFetch = window.fetch;
