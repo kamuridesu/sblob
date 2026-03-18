@@ -1,8 +1,7 @@
 FROM debian:trixie-slim AS build
-RUN apt-get update && apt-get install -y jq
+RUN apt-get update && apt-get install -y jq pandoc
 WORKDIR /setup
-COPY components/ ./components/
-COPY scripts/ ./scripts/
+COPY .pandoc/ ./.pandoc/
 COPY styles/ ./styles/
 COPY posts/ ./posts/
 COPY index.html .
