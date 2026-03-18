@@ -5,7 +5,7 @@ OUTPUT_FOLDER="build"
 echo "Building manifest"
 mkdir -p $OUTPUT_FOLDER || exit 1
 rm -r "$OUTPUT_FOLDER"/* 2>/dev/null
-cp -r components/ styles/ index.html build/
+cp -r styles/ index.html build/
 mkdir -p $OUTPUT_FOLDER/posts || exit 1
 
 LIST_CONTENT="<ul>"
